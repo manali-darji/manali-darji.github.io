@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Js Test</title>
+	<style type="text/css">
+		.btn{display: inline-block;padding: 10px 20px;border: 1px solid #000;border-radius: 5px;text-transform: capitalize;cursor: pointer;margin: 0 10px 20px 0}
+		.active{color: #fff;border-color: #fff;}
+		.black.active{background: #000;}
+		.gold.active{background: #ddc9b2;}
+		.blue.active{background: #adc9dd;}
+		.rose-gold.active{background: #fadcda;}
+		#main_img{display: block;}
+	</style>
+</head>
+<body>
+	<div class="btn black active">black</div>
+	<div class="btn gold">gold</div>
+	<div class="btn blue">blue</div>
+	<div class="btn rose-gold">rose gold</div>
+
+	<img id="main_img" src="images/black.jpeg">
+</body>
+
+<script type="text/javascript">
+	var btn = document.getElementsByClassName("btn");
+	var main_img = document.getElementById("main_img");
+
+	function reset_active_class(){
+		for (var i = 0; i < btn.length; i++) {
+			btn[i].className = btn[i].className.replace(' active','');
+		}
+	}
+	for (var i = 0; i < btn.length; i++) {
+		btn[i].onclick = (function(i){
+			return function() {
+				reset_active_class();
+	    		main_img.setAttribute("src", "images/" + this.innerHTML + ".jpeg");
+	    		this.className += " active";
+			};
+		})(i);
+	}
+</script>
+
+</html>
