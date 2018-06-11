@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Assignment 1</title>
+	<style type="text/css">
+		body{font-size: 16px;background: #000;font-family: Georgia}
+		h1{font-size: 35px;text-align: center;color: #fff;}
+		.wrapper{max-width: 1200px;margin: auto;}
+		.quest{margin: 0 0 5px;}
+		.que-ans{background: #fff;border-radius: 10px;border: 1px solid #666;margin: 0 0 10px;padding: 15px;}
+		.show-ans{display: inline-block; background: #535455; padding: 7px; border-radius: 5px; color: #62e770;cursor: pointer;} 
+		.answer{background: #b5f4b5;margin: 5px 0 0;padding: 10px;}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h1>JS Assignment 1</h1>
+		<div class="que-ans">
+			<div class="quest">Create a variable called carName, assign the value "Honda City" to it, and display it</div>
+			<div class="show-ans">Show Answer</div>
+			<div class="answer">
+				var carName = "Honda City";
+				console.log("carName: " + carName);
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Create a variable called number, assign the value 150 to it, and display it.</div>
+			<div class="show-ans">Show Answer</div>
+			<div class="answer">
+				var number = 150;
+				console.log("number: " + number);
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Display the sum of 5 + 10, using two variables x and y.</div>
+			<div class="show-ans">Show Answer</div>
+			<div class="answer">
+				var x =5, y = 10;
+				console.log("<br> sum of x & y: " + (x+y) );
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Create a third variable called z, assign x + y to it, and display it.</div>
+			<div class="show-ans">Show Answer</div>
+			<div class="answer">
+				var z = x + y;
+				console.log("<br> z: " + z);
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Use a single var keyword to create three variables with the following values: firstName = “John” lastName = “Doe" age = 35</div>
+			<div class="show-ans">Show Answer</div>
+			<div class="answer">
+				var firstName = 'John', lastName = 'Doe', age = 35;
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Create DOB constant. Assume calculateAge() function will give you age. Store the value of calculateAge() in your variable/constant.</div>
+			<div class="show-ans">Show Answer</div>
+			<div class="answer">
+				function calculateAge() {
+					return 30;
+				}
+				var DOB = calculateAge();
+				console.log("DOB: " + DOB);
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Create a variable, assign some value to your variable and insert the value inside "div" element.</div>
+			<div class="show-ans">Show Answer</div>
+			<div id="content" class="answer">
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Use above question and use your choice of prompt box to display value of your variable.</div>
+			<div id="click-here" class="show-ans">Click Here</div>
+			<div id="movie-name" class="answer"></div>
+		</div>
+</body>
+
+<script type="text/javascript">
+	var content = 'This is a dummy content, inserted by "getElementById"';
+	document.getElementById('content').innerHTML = content;
+
+	var showAnsBtn = document.getElementsByClassName('show-ans');
+	var answer = document.getElementsByClassName('answer');
+
+	//by default hide all the answers
+	for (var i = 0; i < answer.length; i++) {
+		answer[i].style.display = 'none';
+	}
+
+
+	for (var i = 0; i < showAnsBtn.length; i++) {
+		showAnsBtn[i].onclick = (function(i){
+			return function() {
+				if( this.className.indexOf('hide-ans') == -1 ){;
+					answer[i].style.display = 'block';
+					this.innerHTML = 'Hide Answer'; 
+					this.className += ' hide-ans';
+					this.style.color = '#ecc2c3';
+				}else{
+					answer[i].style.display = 'none';
+					this.innerHTML = 'Show Answer';
+					this.className = 'show-ans';
+					this.style.color = '#62e770';
+				}
+			};
+		})(i);
+	}
+
+	var cliclHereBtn = document.getElementById('click-here');
+	cliclHereBtn.onclick = function(){
+		var  movieNameDiv = document.getElementById('movie-name');
+		var movieName = window.prompt('Enter your faviourite Movie Name', 'Avengers: Infinity War');
+		if(movieName){
+			movieNameDiv.innerHTML = movieName + '!! Nice, Good Choice!';
+		}else{
+			movieNameDiv.innerHTML = 'Looks like you are not a movie fan!';
+		}
+		movieNameDiv.style.display = 'block';		
+	};	
+</script>
+</html>
