@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Assignment 2</title>
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata|Lato" rel="stylesheet">
+	<style type="text/css">
+		body{font-size: 16px;background: #2C3E50;font-family: 'Lato'}
+		h1{font-size: 35px;text-align: center;color: #fff;}
+		.wrapper{max-width: 1200px;margin: auto;}
+		.quest{margin: 0 0 10px;font-size: 18px;line-height: 25px;}
+		.que-ans{background: #ECF0F1;border: 1px solid #666;margin: 0 0 25px;padding: 15px;}
+		.show-ans, .exec-code{display: inline-block;width: 110px;height: 35px;line-height: 31px; text-align: center;  background: #3498DB;border-radius: 5px; color: #ECF0F1;cursor: pointer;margin: 0 10px 0 0;} 
+		.exec-code{background: #d7c629;color: #000;}
+		.answer{background: #212121;margin: 10px 0 0;padding: 10px;font-family: 'Inconsolata', Arial;color: #ECF0F1;border-radius: 5px;}
+		.answer pre, .answer code{margin: 0}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h1>JS Assignment 2</h1>
+
+		<div class="que-ans">
+			<div class="quest">var counter = 0; counter++; ++counter; alert( counter ); <br> What will alert this and why?</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var counter = 0; counter++; ++counter; alert( counter );
+					</code>
+				</pre>
+				2, After execution of counter++ the value of the counter is 1, after that when ++counter executes the value of the counter becomes 2
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">var n = 2; n *= 3 + 5; alert( n ); <br> What will alert this and why?</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var n = 2; n *= 3 + 5; alert( n );
+					</code>
+				</pre>
+				16, first (3+5) part gets evaluated, then n *=  part executes, i.e. n = 2 * (3+5) = 16
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">What are the final values of all variables a, b, c and d after the code below? <br> var a = 1, b = 1; var c = ++a; var d = b++;</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var a = 1, b = 1; var c = ++a; var d = b++;
+alert("a= "+ a +" b= "+ b +" c= "+ c +" d= "+d)
+					</code>
+				</pre>
+				a => 2, b => 2, c => 2, d => 1
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">What are the values of a and x after the code below?<br>var a = 2; var x = 1 + (a *= 2);</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var a = 2; var x = 1 + (a *= 2); alert("x = " + x);
+					</code>
+				</pre>
+				a => 4, coz of (a *= 2) => (a = a*2) <br> x => 5 x = 1+4 = 5
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Find greatest among 4 numbers</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var a = 1, b = 3, c = 2, d = 0;
+
+if( a > b && a > c && a >d ){
+	alert('Maximum is: ' + a);
+}else if(b > a && b > c && b > d){
+	alert('Maximum is: ' + b);
+}else if(c > a && c > b && c > d){
+	alert('Maximum is: ' + c);
+}else{
+	alert('Maximum is: ' + d);
+}
+					</code>
+				</pre>
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Rewrite this if using the ternary operator '?': <br> if (a + b < 4) { result = 'Below'; } else { result = 'Over'; }</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var a = 3, b = 2;
+(a + b < 4) ? alert(" result = 'Below' ") : alert(" result = 'Over' ");
+					</code>
+				</pre>
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Rewrite following to switch <br> var a = +prompt('a?', ''); if (a == 0) { alert( 0 ); } if (a == 1) { alert( 1 ); } if (a == 2 || a == 3) { alert( '2,3' ); }</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var a = +prompt('a?', '');
+
+switch(a){
+	case 0:
+	alert(0);
+	break;
+
+	case 1:
+	alert(1);
+	break;
+
+	case 2:
+	case 3:
+	alert('2,3');
+	break;
+
+	default:
+	alert('unkown value for a');
+	break;
+}</code>
+				</pre>
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Write a condition to check if the given age is of a teenager or no.</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var age = 23;
+
+if( age > 12 && age < 20){
+	alert('Teenager');
+}else{
+	alert('Not a Teenager');
+}
+					</code>
+				</pre>
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Print/alert todays Day using switch & if-else. Also print a message saying “It is a weekend” if Saturday or Sunday! or be creative.</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var todayDate = new Date();
+var day = todayDate.getDay();
+
+switch(day){
+	case 0:
+	case 6:
+	alert('Switch: Its a weekend, yaaayy !');
+	break;
+
+	case 1:
+	alert('Switch: Oh God Monday is back');
+	break;
+
+	case 2:
+	alert("Switch: What!!!! It's only Tuesday ?!!");
+	break;
+
+	case 3:
+	alert('Switch: Wednesday, OK Half week done.');
+	break;
+
+	case 4:
+	alert('Switch: Thursday, almost there!');
+	break;
+
+	case 5:
+	alert('Switch: YAY, FRIDAY is here !!');
+	break;
+}
+
+
+if( day == 0 || day == 6){
+	alert('if-else: Its a weekend, yaaayy !');
+}else if(day == 1){
+	alert('if-else: Oh God Monday is back');
+}else if(day == 2){
+	alert("if-else: What!!!! It's only Tuesday ?!!");	
+}else if(day == 3){
+	alert('if-else: Wednesday, OK Half week done.');
+}else if(day == 4){
+	alert('if-else: Thursday, almost there!');
+}else if(day == 5){
+	alert('if-else: YAY, FRIDAY is here !!');
+}
+					</code>
+				</pre>
+			</div>
+		</div>
+
+		<div class="que-ans">
+			<div class="quest">Set the color (yellow:morning, blue:evening, black:night) of body tag based on your system time. showcase your creativity</div>
+			<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+			<div class="answer">
+				<pre>
+					<code>
+var date = new Date();
+var hours = date.getHours();
+
+if( hours >= 0 && hours < 15){
+	bodyColor = 'yellow';
+}else if( hours >= 15 && hours < 19){
+	bodyColor = 'blue';
+}else{
+	bodyColor = 'black';
+}
+
+document.getElementsByTagName('body')[0].style.backgroundColor = bodyColor;
+					</code>
+				</pre>
+			</div>
+		</div>
+</body>
+
+<script type="text/javascript">
+	var showAnsBtn = document.getElementsByClassName('show-ans');
+	var answer = document.getElementsByClassName('answer');
+
+	//by default hide all the answers
+	for (var i = 0; i < answer.length; i++) {
+		answer[i].style.display = 'none';
+	}
+
+	for (var i = 0; i < showAnsBtn.length; i++) {
+		showAnsBtn[i].onclick = (function(i){
+			return function() {
+				if( this.className.indexOf('hide-ans') == -1 ){;
+					answer[i].style.display = 'block';
+					this.innerHTML = 'Hide Answer'; 
+					this.className += ' hide-ans';
+					this.style.backgroundColor = '#2980B9';
+				}else{
+					answer[i].style.display = 'none';
+					this.innerHTML = 'Show Answer';
+					this.className = 'show-ans';
+					this.style.backgroundColor = '#3498DB';
+				}
+			};
+		})(i);
+	}	
+
+	var execCode = document.getElementsByClassName('exec-code');
+	for (var i = 0; i < execCode.length; i++) {
+		execCode[i].onclick = (function(i){
+			return function() {
+				var code = answer[i].getElementsByTagName('code')[0].innerHTML;
+				code = code.replace(/&gt;/g , '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
+
+				var newScript = document.createElement("script");
+				var inlineScript = document.createTextNode(code);
+				
+				newScript.appendChild(inlineScript); 
+				answer[i].appendChild(newScript);
+			};
+		})(i);
+	}
+</script>
+</html>
