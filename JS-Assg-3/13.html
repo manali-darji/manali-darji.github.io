@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>3 Level Menu</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+	<style type="text/css">
+		body{font-family: 'Lato';margin: 0;background: #222;}	
+		ul{box-sizing: border-box; background: #336ca6;color: #fff;border:1px solid #2c5d8f; width: 300px; list-style: none;padding: 0; margin: 0;text-align: center;}
+		ul li{padding: 10px;font-size: 20px;position: relative;border-bottom: 1px solid #2c5d8f;cursor: pointer;transition: all 0.3s linear}
+		ul li:hover{background: #85c6d1;}
+		ul li span{position: absolute;right: 15px;}
+		.sub-menu, .sub-sub-menu{position: absolute;left: 100%;top: 0;display: none;}
+	</style>
+</head>
+<body>
+	<ul class="main-menu menu clearfix">
+		<li>
+			1st ul li
+			<ul class="sub-menu menu">
+				<li>
+					2nd ul li
+					<ul class="sub-menu menu">
+						<li>3rd ul li</li>
+						<li>3rd ul li</li>
+						<li>3rd ul li</li>
+						<li>3rd ul li</li>
+						<li>3rd ul li</li>
+					</ul>
+				</li>
+				<li>2nd ul li</li>
+				<li>2nd ul li</li>
+				<li>2nd ul li</li>
+				<li>
+					2nd ul li
+					<ul class="sub-menu menu">
+						<li>3rd ul li</li>
+						<li>3rd ul li</li>
+						<li>3rd ul li</li>
+						<li>3rd ul li</li>
+						<li>3rd ul li</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>1st ul li</li>
+		<li>1st ul li</li>
+		<li>1st ul li</li>
+		<li>1st ul li</li>
+		<li>1st ul li</li>
+		<li>
+			1st ul li
+			<ul class="sub-menu menu">
+				<li>2nd ul li - 2</li>
+				<li>2nd ul li - 2</li>
+				<li>2nd ul li - 2</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+
+<script type="text/javascript"> 
+	function showSubMenuOnHover() {
+		var mainMenuli = document.querySelectorAll('.main-menu li'); //collecting all li inside .main-menu
+
+		// looping through each li inside .main-menu & adding event listener for mouseover & mouseout events
+		for (var i = 0; i < mainMenuli.length; i++) {
+			mainMenuli[i].addEventListener("mouseover", function () {
+				// if hovered over specific li, check if .sub-menu exists, if yes then display it
+				if(this.querySelector('.sub-menu')){ 
+					this.querySelector('.sub-menu').style.display = "block";
+				}
+			}); 
+
+			mainMenuli[i].addEventListener("mouseout", function () {
+				// if we move away from specific li, check if .sub-menu exists, if yes then hide it
+				if(this.querySelector('.sub-menu')){
+					this.querySelector('.sub-menu').style.display = "none";
+				}
+			});
+		}
+	}
+
+	showSubMenuOnHover();
+</script>
+
+</html>

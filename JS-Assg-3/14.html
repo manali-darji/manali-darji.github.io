@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tab Switch</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+	<style type="text/css">
+	body{font-family: 'Lato';margin: 0;background: #222;}
+	.container{max-width: 1200px;padding: 0 10px;margin: auto;}
+	.clearfix:before, .clearfix:after{display: block;content: ''; clear: both;}
+	.tabs{background: #545f60;color: #fff;margin: 40px 0 0;border-radius: 5px;}
+	#tab-wrapper{text-align: center;}
+	.tab-heading{background: #6dddee;color: #222; display: inline-block; box-sizing: border-box;padding: 15px;font-size: 25px;cursor: pointer;transition: all 0.4s linear;position: relative;bottom: 0;}
+	.tab-heading:first-child{border-top-left-radius:5px;}
+	.tab-heading:last-child{border-top-right-radius:5px;}
+	.tab-heading.active{background: #545f60; color: #6dddee;position: relative;bottom: 15px;}
+	.content{display: none;font-size: 50px;text-transform: uppercase; box-sizing: border-box;padding: 200px 10px;text-align: center;transition: all 0.5s linear;}
+	.content:first-child{display: block;}
+	</style>
+</head>
+<body>
+	<div class="container">	
+		<div class="tabs">
+			<div id="tab-wrapper" class="clearfix">		
+			</div>
+
+			<div id="content-wrapper" class="clearfix">
+			</div>			
+		</div>	
+	</div>
+</body>
+
+<script type="text/javascript">
+	
+	var tabArray;
+	// creating tabs & inside content
+	function createTabAndContentArray(){
+		//creating main structure
+		var tabAndContent = function (tab, insideContent) {
+			this.tab = tab;
+			this.insideContent = insideContent;
+		}
+
+		// creating objects
+		var Tab1 = new tabAndContent('Tab1', 'Content 1');
+		var Tab2 = new tabAndContent('Tab2', 'Content 2');
+		var Tab3 = new tabAndContent('Tab3', 'Content 3');
+		var Tab4 = new tabAndContent('Tab4', 'Content 4');
+		var Tab5 = new tabAndContent('Tab5', 'Content 5');
+
+		// creating array of tabAndContent objects
+		tabArray = [ Tab1, Tab2, Tab3, Tab4, Tab5];		
+	}	
+
+	//creating tabs and contents div from th array of tabAndContent objects
+	function createTabsAndContent() {
+		var tabWrapper = document.getElementById('tab-wrapper');
+		var contentWrapper = document.getElementById('content-wrapper');
+
+		for (var i = 0; i < tabArray.length; i++) {
+			// creating tabs and appending to the tab wrapper
+			var tabDiv = document.createElement('div');
+			tabDiv.className = 'tab-heading';
+			tabDiv.innerHTML = tabArray[i].tab;
+			tabWrapper.appendChild(tabDiv);
+
+			// creating content divs and appending to the content wrapper
+			var contentDiv = document.createElement('div');
+			contentDiv.className = 'content';
+			contentDiv.innerHTML = tabArray[i].insideContent;
+			contentWrapper.appendChild(contentDiv);
+		}
+
+		//adding ative class to the first tab
+		document.querySelector('.tab-heading').classList.add("active");
+
+		//finidng tab width depending upon how much no of tabs are present
+		function findTabWidth() {
+			var tabWidth = Math.floor( 100/tabArray.length );
+			var tab = document.querySelectorAll('.tab-heading');
+
+			for (var i = 0; i < tab.length; i++) {
+				tab[i].style.width = tabWidth + '%';
+			}
+		}
+		findTabWidth();
+	}
+
+	// switching tabs 
+	function switchTabs(){
+		var content = document.querySelectorAll('.content');
+		var tab = document.querySelectorAll('.tab-heading');
+
+		// hides all content divs
+		function hideAllContent(){
+			for (var i = 0; i < content.length; i++) {
+				content[i].style.display = 'none';
+			}		
+		}
+
+		// removing active class from all tab divs
+		function removeActiveFromTabs(){
+			for (var i = 0; i < tab.length; i++) {
+				tab[i].className = 'tab-heading';
+			}
+		}
+
+		// tab switching logic
+		for (var i = 0; i < tab.length; i++) {
+			(function (i) {
+				tab[i].addEventListener('click', function (){
+					removeActiveFromTabs();
+
+					// if not active then make that tab active and display correponding content div
+					if( this.className.indexOf('active') == -1 ){ 
+						hideAllContent();
+						content[i].style.display = 'block';
+						this.classList.add("active");
+					}else{
+						this.classList.remove("active");
+					}
+				});
+			})(i);
+		}		
+	}	
+
+	// function calling
+	createTabAndContentArray();
+	createTabsAndContent();	
+	switchTabs();
+
+
+</script>
+
+</html>

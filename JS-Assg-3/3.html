@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ternary</title>
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata|Lato" rel="stylesheet">
+
+	<style type="text/css">
+		*{margin: 0;padding: 0;box-sizing: border-box;}
+		body{font-family: 'Lato';font-size: 16px;background: #666;}
+		.clearfix:after, .clearfix:before{content: '';display: block;clear: both;}
+		.container{max-width: 1200px;padding: 0 10px;margin: auto;}
+		h1 {font-size: 45px; text-align: center; color: #fff;margin: 25px 0;} 
+		pre, code{margin: 0}
+		pre{background: #212121;margin: 10px 0 0;padding: 10px;font-family: 'Inconsolata', Arial;color: #ECF0F1;border-radius: 5px;margin: 0 0 10px;}
+
+		.que-ans{background: #ECF0F1;border: 1px solid #666;margin: 0 0 25px;padding: 15px;}
+		.quest{margin: 0 0 10px;font-size: 18px;line-height: 25px;}
+		#exec-code{display: inline-block;width: 110px;height: 35px;line-height: 31px; text-align: center;background: #d7c629;color: #000;border-radius: 5px;cursor: pointer;margin: 0 10px 0 0;transition: all 0.3s linear;} 
+		#exec-code:hover{background: #8b822b;color: #fff;} 
+	</style>
+</head>
+
+<body>
+	<h1>Minimum from 2 using Ternary Operator</h1>
+
+	<div class="container">	
+		<div class="que-ans">
+			<div class="quest">WAF to find min value from 2 numbers using ternary operators </div>		
+			<pre>
+				<code id="code">
+function min(a,b) {
+	if( isNaN(a) || isNaN(b) ){
+		return "Values should be numbers";
+	}else if( a == b){
+		return "Numbers are equal";
+	}else{
+		return "Minimum from "+ a + " & " + b + " is " + ( ( a < b ) ? a : b ); 
+	}
+}
+
+alert( min(8, 15) );
+alert( min('eight', 15) );
+alert( min(8, 8) );
+				</code>
+			</pre>
+			<div id="exec-code">Execute Code</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">	
+	function takeCodeAndAppendAsScript() {
+		var code = document.getElementById('code').innerHTML;
+		code = code.replace(/&gt;/g , '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
+
+		var newScript = document.createElement("script");
+		var inlineScript = document.createTextNode(code);
+		
+		newScript.appendChild(inlineScript); 
+		document.body.appendChild(newScript);	
+	}
+
+	document.getElementById('exec-code').addEventListener('click', takeCodeAndAppendAsScript);
+</script>
+
+</html>

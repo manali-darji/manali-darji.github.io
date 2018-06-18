@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Differnece</title>
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata|Lato" rel="stylesheet">
+
+	<style type="text/css">
+		*{margin: 0;padding: 0;box-sizing: border-box;}
+		body{font-family: 'Lato';font-size: 16px;background: #666;}
+		.clearfix:after, .clearfix:before{content: '';display: block;clear: both;}
+		.container{max-width: 1200px;padding: 0 10px;margin: auto;}
+		h1 {font-size: 45px; text-align: center; color: #fff;margin: 25px 0;} 
+		pre, code{margin: 0}
+		pre{background: #212121;margin: 10px 0 0;padding: 10px;font-family: 'Inconsolata', Arial;color: #ECF0F1;border-radius: 5px;margin: 0 0 10px;}
+
+
+		.que-ans{background: #ECF0F1;border: 1px solid #666;margin: 0 0 25px;padding: 15px;}
+		.quest{margin: 0 0 10px;font-size: 18px;line-height: 25px;}
+
+
+	</style>
+</head>
+
+<body>
+	<h1>Difference</h1>
+
+	<div class="container">	
+		<div class="que-ans">
+			<div class="quest">What is the difference between following 2 functions if any? </div>		
+
+			<pre>
+				<code>
+function checkAge(age) {
+  if (age > 18) {
+    return true;
+  } else {
+    return confirm('Did parents allow you?');
+  }
+}
+
+function checkAge(age) {
+  if (age > 18) {
+    return true;
+  }
+ return confirm('Did parents allow you?');
+}				
+				</code>
+			</pre>
+
+
+			<div class="quest">
+				ANSWER: <br>
+				-Both the function's aim is same i.e. checking if the age is less than 18 then returning true, otherwise confirm from the user 'Did parents allow you?'
+				-The difference is, in the 1st function pure 'if-else' block has been written and in 2nd function, only 'if' block is written, so if it enters the 'if' block, it will return true and the return statement after the 'if' block will never be executed and if it doesn't go inside the 'if' block it will execute the return statement written outside the 'if' block. 
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Assignment</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato|Reenie+Beanie" rel="stylesheet">
+
+	<style type="text/css">
+		*{margin: 0;padding: 0;box-sizing: border-box;}
+		body{font-family: 'Lato';font-size: 16px;background: #666;}
+		.clearfix:after, .clearfix:before{content: '';display: block;clear: both;}
+		.container{max-width: 1200px;padding: 0 10px;margin: auto;}
+		h1 {font-size: 45px; text-align: center; color: #fff;margin: 15px 0;} 
+		#sticky-notes{padding: 15px;list-style: none;text-align: center;}
+		#sticky-notes li{margin: 20px;float: left;position: relative;}
+		#sticky-notes li a:after{content: '';background: red;width: 15px;height: 15px;border-radius: 50%;box-shadow: 5px 5px 7px rgba(33,33,33,.7);position: absolute;left: 50%;transform: translateX(-50%);top: 6px;z-index: 3}
+		#sticky-notes li a{display: block;width: 235px;height: 235px;padding: 15px;background: #ffc;box-shadow: 5px 5px 7px rgba(33,33,33,.7);color: inherit;text-decoration: none;transition: all 0.4s linear;transform: rotate(-6deg);}
+		#sticky-notes li:nth-child(even) a{background: #cfc;transform: rotate(4deg);position: relative;top: 5px;}
+		#sticky-notes li:nth-child(even) a:after{background: #0f1cd2;}
+		#sticky-notes li:nth-child(3n) a{background: #ccf;transform: rotate(-3deg); position: relative; top: -5px;}
+		#sticky-notes li:nth-child(3n) a:after{background: #81ef0b}
+		#sticky-notes li:nth-child(5n) a {transform: rotate(5deg); position: relative; top: -10px;}
+		#sticky-notes li a:hover{transform: scale(1.2);box-shadow: 10px 10px 7px rgba(0,0,0,.7);z-index: 2;}
+		#sticky-notes li a .title{font-family: 'Reenie Beanie'; font-size: 47px;padding: 0 0 15px;}
+		#sticky-notes li a .que{font-size: 18px;padding: 0 0 5px;}
+	</style>
+</head>
+
+<body>
+	<h1>JS Assignment 3</h1>
+
+	<div class="container">	
+		<ul id="sticky-notes" class="clearfix">
+			
+		</ul>
+	</div>
+</body>
+
+<script type="text/javascript">	
+
+	var stickyNotes = document.getElementById('sticky-notes')
+
+	var questions = [
+		'What is the difference between given 2 functions if any?',
+		'Rewrite the code in #1 Question using ternary operator',
+		'WAF to find min value from 2 numbers using ternary operators',
+		'WAF to find prime numbers from 1-100',
+		'Implement IIFE',
+		'Demonstrate difference between function declaration and expression',
+		'WAF to multi 2/multiple numbers - Use function parameters/arguments',
+		'Implement previous assignments (Take any 5 examples.) using pure functions',
+		'WAF: To check if palindrome',
+		'WAF: To generate fibonacci series upto user entered number eg: if user enters 6.  output: 1 1 2 3 5 8',
+		'Create 3 pure functions',
+		'Make a header with navigation bar at 200px from the top of the screen, make the header sticky once you scroll past it',
+		'Make 3 level navigation menu, using javascript. use hover/click to show child level menus',
+		'Implement tab switch functionality/name of tab and content should come from an object'
+	];
+
+	for (var i = 1; i <= questions.length; i++) {
+		var li = document.createElement('li');
+		var a = document.createElement('a');
+		a.setAttribute('href', i + '.html');
+		a.setAttribute('target', '_blank');
+
+		var title = document.createElement('p');
+		title.className = 'title';
+		title.innerHTML = '#' + i + ' Question';
+		var que = document.createElement('p');
+		que.innerHTML = questions[ i - 1 ];
+		que.className = 'que';
+
+		a.appendChild(title);
+		a.appendChild(que);
+
+		li.appendChild(a);
+
+		stickyNotes.appendChild(li);
+		// questions[i]
+	}
+
+</script>
+
+</html>

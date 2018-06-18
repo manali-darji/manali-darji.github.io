@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pure functions</title>
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata|Lato" rel="stylesheet">
+
+	<style type="text/css">
+		*{margin: 0;padding: 0;box-sizing: border-box;}
+		body{font-family: 'Lato';font-size: 16px;background: #666;}
+		.clearfix:after, .clearfix:before{content: '';display: block;clear: both;}
+		.container{max-width: 1200px;padding: 0 10px;margin: auto;}
+		h1 {font-size: 40px; text-align: center; color: #fff;margin: 25px 0;} 
+		.quest{margin: 0 0 10px;font-size: 18px;line-height: 25px;}
+		.que-ans{background: #ECF0F1;border: 1px solid #666;margin: 0 0 25px;padding: 15px;}
+		.show-ans, .exec-code{display: inline-block;width: 110px;height: 35px;line-height: 31px; text-align: center;  background: #3498DB;border-radius: 5px; color: #ECF0F1;cursor: pointer;margin: 0 10px 0 0;} 
+		.exec-code{background: #d7c629;color: #000;}
+		.answer{background: #212121;margin: 10px 0 0;padding: 10px;font-family: 'Inconsolata', Arial;color: #ECF0F1;border-radius: 5px;}
+		.answer pre, .answer code{margin: 0}
+
+	</style>
+</head>
+
+<body>
+	<h1>Implement previous assignments (Take any 5 egs) using pure functions</h1>
+
+	<div class="container">
+		<div class="que-ans">
+					<div class="quest">Alert today's Day. Also print a message saying “It is a weekend” if Saturday or Sunday!</div>
+					<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+					<div class="answer">
+						<pre>
+							<code>
+function AlertTodaysDay(){
+	var todayDate = new Date();
+	var day = todayDate.getDay();
+
+	switch(day){
+		case 0:
+		case 6:
+		alert('Its a weekend, yaaayy !');
+		break;
+
+		case 1:
+		alert('Oh God Monday is back');
+		break;
+
+		case 2:
+		alert("What!!!! It's only Tuesday ?!!");
+		break;
+
+		case 3:
+		alert('Wednesday, OK Half week done.');
+		break;
+
+		case 4:
+		alert('Thursday, almost there!');
+		break;
+
+		case 5:
+		alert('YAY, FRIDAY is here !!');
+		break;
+	}	
+}
+AlertTodaysDay();
+							</code>
+						</pre>
+					</div>
+				</div>
+
+				<div class="que-ans">
+					<div class="quest">Find greatest among 4 numbers</div>
+					<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+					<div class="answer">
+						<pre>
+							<code>
+function findMax(a, b, c, d){
+	if( a > b && a > c && a >d ){
+		alert('Maximum is: ' + a);
+	}else if(b > a && b > c && b > d){
+		alert('Maximum is: ' + b);
+	}else if(c > a && c > b && c > d){
+		alert('Maximum is: ' + c);
+	}else{
+		alert('Maximum is: ' + d);
+	}	
+}
+
+findMax(1, 3, 8, -1);
+							</code>
+						</pre>
+					</div>
+				</div>
+
+				<div class="que-ans">
+					<div class="quest">Write a condition to check if the given age is of a teenager or no.</div>
+					<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+					<div class="answer">
+						<pre>
+							<code>
+function teenagerOrNot( age ){
+	if( age > 12 && age < 20){
+		alert('Teenager');
+	}else{
+		alert('Not a Teenager');
+	}
+}
+teenagerOrNot( 21 );
+							</code>
+						</pre>
+					</div>
+				</div>
+
+				<div class="que-ans">
+					<div class="quest">Set the color (yellow:morning, blue:evening, black:night) of body tag based on your system time.</div>
+					<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+					<div class="answer">
+						<pre>
+							<code>
+function changeBgColorAccToTime(){
+	var date = new Date();
+	var hours = date.getHours();
+
+	if( hours >= 0 && hours < 15){
+		bodyColor = '#d8d853';
+	}else if( hours >= 15 && hours < 19){
+		bodyColor = '#375385';
+	}else{
+		bodyColor = '#000';
+	}
+
+	document.getElementsByTagName('body')[0].style.backgroundColor = bodyColor;
+}
+changeBgColorAccToTime();
+							</code>
+						</pre>
+					</div>
+				</div>
+
+				<div class="que-ans">
+					<div class="quest">Rewrite this if using the ternary operator '?': <br>
+					if (a + b < 4) { result = 'Below'; } else { result = 'Over'; }</div>
+					<div class="show-ans">Show Answer</div> <div class="exec-code">Execute Code</div>
+					<div class="answer">
+						<pre>
+							<code>
+function check( a, b ){
+	return ( a + b < 4 ) ? 'Below' : 'Over';
+}
+
+alert( check( 5, 4 ) );
+							</code>
+						</pre>
+					</div>
+				</div>
+	</div>
+</body>
+
+<script type="text/javascript">	
+	var answer = document.getElementsByClassName('answer');
+
+	function toggleShowAnsBtn() {
+		var showAnsBtn = document.getElementsByClassName('show-ans');
+
+		//by default hide all the answers
+		for (var i = 0; i < answer.length; i++) {
+			answer[i].style.display = 'none';
+		}
+
+		for (var i = 0; i < showAnsBtn.length; i++) {
+			showAnsBtn[i].onclick = (function(i){
+				return function() {
+					if( this.className.indexOf('hide-ans') == -1 ){;
+						answer[i].style.display = 'block';
+						this.innerHTML = 'Hide Answer'; 
+						this.classList.add('hide-ans');
+						this.style.backgroundColor = '#2980B9';
+					}else{
+						answer[i].style.display = 'none';
+						this.innerHTML = 'Show Answer';
+						this.classList.remove('hide-ans');
+						this.style.backgroundColor = '#3498DB';
+					}
+				};
+			})(i);
+		}	
+	}	
+
+	function executeCode() {
+		var execCode = document.getElementsByClassName('exec-code');
+		for (var i = 0; i < execCode.length; i++) {
+			execCode[i].onclick = (function(i){
+				return function() {
+					var code = answer[i].getElementsByTagName('code')[0].innerHTML;
+					code = code.replace(/&gt;/g , '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
+
+					var newScript = document.createElement("script");
+					var inlineScript = document.createTextNode(code);
+					
+					newScript.appendChild(inlineScript); 
+					answer[i].appendChild(newScript);
+				};
+			})(i);
+		}
+	}
+
+	toggleShowAnsBtn();
+	executeCode();
+
+</script>
+
+</html>
